@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function GuessInput({ setResult }) {
+function GuessInput({ setResult, gameState }) {
   const [guess, setGuess] = useState("");
 
   return (
@@ -19,6 +19,7 @@ function GuessInput({ setResult }) {
         type="text"
         value={guess}
         onChange={(e) => setGuess(e.target.value)}
+        disabled={gameState !== "playing"}
       />
     </form>
   );

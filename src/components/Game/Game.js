@@ -8,6 +8,7 @@ import { WORDS } from "../../data";
 import Banner from "../Banner";
 import GuessInput from "../GuessInput";
 import GuessResults from "../GuessResults";
+import Keyboard from "../Keyboard/Keyboard";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -25,12 +26,14 @@ function Game() {
     if (r === answer) {
       setGameState("happy");
     }
-    setResults([...results, checkGuess(r, answer)]);
+    const newResults = [...results, checkGuess(r, answer)];
+    setResults(newResults);
   };
   return (
     <>
       <GuessResults results={results} />
       <GuessInput setResult={setResult} gameState={gameState} />
+      <Keyboard results={results} />
       {gameState !== "playing" && (
         <Banner
           status={gameState}

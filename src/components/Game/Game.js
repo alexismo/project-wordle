@@ -11,13 +11,19 @@ import GuessResults from "../GuessResults";
 import Keyboard from "../Keyboard/Keyboard";
 
 // Pick a random word on every pageload.
-const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
-console.info({ answer });
 
 function Game() {
+  const [answer, setAnswer] = useState(sample(WORDS));
   const [results, setResults] = useState([]);
-  const [gameState, setGameState] = useState("playing"); //playing | happy | sad
+  const [gameState, setGameState] = useState("happy"); //playing | happy | sad
+
+  const newGame = () => {
+    setAnswer(sample(WORDS));
+    setResults([]);
+    setGameState("playing");
+  };
+
   const setResult = (r) => {
     const resLen = results.length + 1;
     if (resLen === NUM_OF_GUESSES_ALLOWED) {
@@ -29,6 +35,7 @@ function Game() {
     const newResults = [...results, checkGuess(r, answer)];
     setResults(newResults);
   };
+
   return (
     <>
       <GuessResults results={results} />
@@ -39,6 +46,7 @@ function Game() {
           status={gameState}
           answer={answer}
           numguesses={results.length}
+          newGameFn={newGame}
         />
       )}
     </>

@@ -17,6 +17,7 @@ function GuessInput({ setResult, gameState }) {
       <input
         id="guess-input"
         type="text"
+        autoComplete="off"
         value={guess}
         onChange={(e) => setGuess(e.target.value)}
         disabled={gameState !== "playing"}

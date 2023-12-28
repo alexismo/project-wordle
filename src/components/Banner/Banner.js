@@ -1,6 +1,6 @@
 import React from "react";
 
-function Banner({ status, answer, numguesses }) {
+function Banner({ status, answer, numguesses, newGameFn }) {
   const victoryMessage = (
     <>
       <strong>Congratulations!</strong> You got it in{" "}
@@ -19,6 +19,8 @@ function Banner({ status, answer, numguesses }) {
   return (
     <div className={`${status} banner`}>
       {status === "happy" ? victoryMessage : defeatMessage}
+      <br />
+      <button onClick={() => newGameFn()}>Restart game</button>
     </div>
   );
 }

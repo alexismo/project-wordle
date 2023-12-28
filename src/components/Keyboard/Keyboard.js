@@ -2,9 +2,9 @@ import React from "react";
 import KeyboardKey from "../KeyboardKey/KeyboardKey";
 
 const keys = [
-  ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
-  ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
-  ["z", "x", "c", "v", "b", "n", "m"],
+  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+  ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+  ["Z", "X", "C", "V", "B", "N", "M"],
 ];
 
 function Keyboard({ results }) {
@@ -18,15 +18,17 @@ function Keyboard({ results }) {
       return acc;
     }, {});
 
-  console.log(allGuesses);
-
   return (
     <div className="keyboard">
       {keys.map((row, i) => (
         <div className="row" key={`row${i}`}>
           {row.map((k) => (
             //evaluate whether the current letter exists in the allGuesses array
-            <KeyboardKey letter={k} status={allGuesses.find} key={k} />
+            <KeyboardKey
+              letter={k}
+              status={allGuesses[k] ? allGuesses[k] : ""}
+              key={k}
+            />
           ))}
         </div>
       ))}

@@ -1,10 +1,10 @@
 import React from "react";
 
-function Banner({ status, answer, numguesses, newGameFn }) {
+function Banner({ status, answer, numGuesses, newGameFn }) {
   const victoryMessage = (
     <>
       <strong>Congratulations!</strong> You got it in{" "}
-      <strong>{numguesses} guesses</strong>.
+      <strong>{numGuesses === 1 ? "1 guess" : `${numGuesses} guesses`}</strong>.
     </>
   );
 

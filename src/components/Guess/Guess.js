@@ -5,7 +5,7 @@ import { range } from "../../utils";
 function Guess({ word }) {
   return (
     <p className="guess">
-      {range(0, 5).map((n) => (
+      {range(5).map((n) => (
         <span
           className={`cell${word[n] !== undefined ? ` ${word[n].status}` : ""}`}
           key={`${word}.${n}`}

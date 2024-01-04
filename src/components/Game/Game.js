@@ -16,7 +16,7 @@ import Keyboard from "../Keyboard/Keyboard";
 function Game() {
   const [answer, setAnswer] = useState(sample(WORDS));
   const [results, setResults] = useState([]);
-  const [gameState, setGameState] = useState("happy"); //playing | happy | sad
+  const [gameState, setGameState] = useState("playing"); //playing | happy | sad
 
   const newGame = () => {
     setAnswer(sample(WORDS));
@@ -32,6 +32,7 @@ function Game() {
     if (r === answer) {
       setGameState("happy");
     }
+
     const newResults = [...results, checkGuess(r, answer)];
     setResults(newResults);
   };
@@ -45,7 +46,7 @@ function Game() {
         <Banner
           status={gameState}
           answer={answer}
-          numguesses={results.length}
+          numGuesses={results.length}
           newGameFn={newGame}
         />
       )}
